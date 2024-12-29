@@ -28,6 +28,8 @@ greet(cust) # Here "cust" is passed by reference to the function greet() which m
   
 # if a object is passed to a function then it will change the original object.
 
+
+
 # Ex:-
 
 # class Customer:
@@ -44,5 +46,12 @@ greet(cust) # Here "cust" is passed by reference to the function greet() which m
 
 # greet(cust)
 
+
+
 # print(cust.name)  # The name will be changed to "Arunesh Sharma" as we passed the reference of cust object to the function greet() which changed the original object.  
 # --> class k objects are also mutable like, list, dict and sets  ---> because their addresses are also same as before...
+
+
+# Conclusion :
+    
+#  -->   If you will send a mutable (Ex- List, objects) object to a function then it will change the original object. If you will send an immutable (Ex- Tuple) object to function then it will not affect the original object.
