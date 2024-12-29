@@ -9,7 +9,7 @@
 # Nothings in python is truly private -> you can access everything with this syntax "_Classname__DataMembername = "abcd" ".
 
 
-class Atm:
+class Atm: 
     
     def __init__(self):
         
@@ -24,8 +24,11 @@ class Atm:
     
     # Setters
     def set_pin(self, new_pin):
+        # if type(new_pin) == str:   --> if I want pint to be in string type only
         self.__pin = new_pin
         print("Pin set to " + str(self.__pin))
+        # else:
+        #     print("Not Allowed")
         
     def menu(self):
         
@@ -90,7 +93,7 @@ class Atm:
             
 sbi = Atm()
 sbi.get_pin()
-sbi.set_pin(9999)
+sbi.set_pin()
 sbi.deposit()
 sbi.withdraw()
 sbi.check_balance()
