@@ -54,3 +54,50 @@ print(cust.address.state)
 #             SmartPhone(Class1) ---> IS-A --> Product(Class2)   ==> This means all the things of products are applicable on smartphone..
 #             Car(Class1) ---> IS-A --> Vehicle(Class2) ==> This means all the things of vehicle is applicable on car..
             
+        #         Inheritance is used to create a new class from an existing class.  
+        #         It provides reusability and reduces code duplication.
+        #         Inheritance can be used in multiple levels.
+        #         Inheritance can be used to add new properties or methods to a class.
+        #         Inheritance can be used to override existing properties or methods in a class.
+        #         Inheritance can be used to hide existing properties or methods in a class.
+        #         Inheritance can be used to restrict the access of properties or methods in a class.
+        
+        
+        # Data members (Variables), Member Functions (Methods), Constructor, Destructor --> these are the things which are inherited from parent class to child class.
+        # Private members are not Inherited...
+        
+        # Types of Inheritance :
+            # 1. Single Inheritance : One child class inherits from one parent class.
+            # 2. Multiple Inheritance : One child class inherits from multiple parent classes.
+            # 3. Multilevel Inheritance : One child class inherits from multiple parent classes, where each parent class inherits from another parent class.
+            # 4. Hierarchical Inheritance : One child class inherits from multiple parent classes, but all parent classes are related to each other.
+            # 5. Hybrid Inheritance : One child class inherits from multiple parent classes, and some of the parent classes are related to each other.
+        
+        # Inheritance and Polymorphism :
+            # Inheritance allows us to reuse code and reduce code duplication.
+            # Polymorphism allows us to perform different actions based on the object type.
+            # Polymorphism is achieved using method overriding and method overloading.
+            # Method overriding is used to override a method in a child class with the same name and parameters as in the parent class.
+            
+class User:
+    
+    def login(self):
+        print("User logged in")
+        
+    def register(self):
+        print("User registered")
+        
+class Student(User):  # --> This tell that Student class is a subclass of User class...
+    
+    def enroll(self):
+        print("Student enrolled")
+        
+    def review(self):
+        print("Student reviewed")
+        
+s1 = Student()
+
+s1.enroll()
+s1.review()
+s1.login()  # --> This will call the login() method from User class...
+s1.register()  # --> This will call the register() method from User class...    --> But Reverse is not Possible...
