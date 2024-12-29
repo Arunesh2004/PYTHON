@@ -101,3 +101,115 @@ s1.enroll()
 s1.review()
 s1.login()  # --> This will call the login() method from User class...
 s1.register()  # --> This will call the register() method from User class...    --> But Reverse is not Possible...
+
+
+
+# Ex1 (Inheriting Constructors):
+
+class Phone:
+    
+    def __init__(self, price, brand, camera):
+        
+        print("Inside Phone class constructor")
+        
+        self.price = price
+        self.brand = brand
+        self.camera = camera
+         
+        
+class SmartPhone(Phone):
+    pass
+
+Ph = SmartPhone(20000, "Apple", 13)
+print(Ph.brand)  # --> This shows that if the child class do not have a constructor the the constructor of parent class will be called...
+
+
+
+# Ex2 (Inheriting Private Members):
+
+class Phone:
+    
+    def __init__(self, price, brand, camera):
+        
+        print("Inside Phone class constructor")
+        
+        self.price = price
+        self.__brand = brand # --> For now this attribute is private...
+        self.camera = camera
+        
+        
+class SmartPhone(Phone):
+    pass
+
+
+Ph = SmartPhone(20000, "Apple", 13)
+print(Ph.__brand) # --> This shows that Private Members can't be inherited...
+
+
+
+# Ex3 (PolyMorphism):
+
+class Phone:
+    
+    def __init__(self, price, brand, camera):
+        
+        print("Inside Phone class constructor")
+        
+        self.price = price
+        self.__brand = brand # --> For now this attribute is private...
+        self.camera = camera
+        
+    def buy(self):
+        print("Phone bought")
+        
+        
+class SmartPhone(Phone):
+    def buy(self):
+        print("Buying a smart phone")
+        
+Ph = SmartPhone(20000, "Apple", 13)
+Ph.buy() # Since both classes have same function name, here SmartPhone will call its own function --> This is also called "Method Overriding".
+
+
+
+# Ex4 (Class Parent):
+ 
+class Parent:
+    
+    def __init__(self, num):
+        self.__num = num
+        
+    def get_num(self):
+        return self.__num
+    
+class Child:
+    
+    def show(self):
+        print("Child Class")
+        
+son = Child(100)  # Since Child have no constructor, The value 100 will be passed to Parent
+print(son.Child.get_num())
+son.show()
+
+
+
+# Ex5 (Class Parent):
+ 
+class Parent:
+    
+    def __init__(self, num):
+        self.__num = num
+        
+    def get_num(self):
+        return self.__num
+    
+class Child:
+    
+    def __init__(self, value, num):
+        self.__value = value
+        
+    def get_num(self):
+        return self.__value
+        
+son = Child(100, 10)
+print(son.Child.get_num())  # Since Child have both the Constructors, The values will pe passed accordingly, BUT the constructor num wasn't initialized in Child (and constructor num of Parent wasn't called since child have its own) --> The code will show error...
