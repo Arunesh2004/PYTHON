@@ -213,3 +213,82 @@ class Child:
         
 son = Child(100, 10)
 print(son.Child.get_num())  # Since Child have both the Constructors, The values will pe passed accordingly, BUT the constructor num wasn't initialized in Child (and constructor num of Parent wasn't called since child have its own) --> The code will show error...
+
+
+
+# Ex6 (Class Parent):
+
+class Parent:
+    
+    def __init__(self):
+        self.var = 100
+        
+    def display1(self, var):
+        print("Parent Class : ", self.var)
+        
+class Child(Parent):
+    
+    def display2(self, var):
+        print("Child Class : ", self.var)
+        
+obj = Child()
+obj.display1(200) # This wills how 100 as output, even though we are passing 200 but in display1 we are using self.var  that is 100 ...
+
+
+
+# Ex7 (Super):
+
+class Phone:
+    
+    def __init__(self, price, brand, camera):
+        
+        print("Inside phone constructor")
+        
+        self.__price = price
+        self.brand = brand
+        self.camera = camera
+        
+    def buy(self):
+        
+        print("Phone bought")
+        
+class SmartPhone(Phone):
+    
+    def buy(self):
+        
+        print("Buying a smart phone")
+        
+        super().buy()  # --> This is calling the buy() method from Parent class...
+        
+s = SmartPhone(2000, "Apple", 13)
+
+s.buy() # super keyword is used to call the method of parent class from child class... and we can't use it from outside of the class...
+
+
+
+# Ex7 (Super):
+
+class Phone:
+    
+    def __init__ (self, price, brand, camera):
+        
+        print("Inside phone constructor")
+        
+        self.__price = price
+        self.brand = brand
+        self.camera = camera
+        
+class SmartPhone(Phone):
+    
+    def __init__(self, price, brand, camera, os, ram):
+        
+        super().__init__(price, brand, camera)  # Here we can see that the common attributes that are passed into the constructor of parent class from child class...
+        
+        self.os = os
+        self.ram = ram
+        print("Inside smart phone constructor")
+        
+s = SmartPhone(2000, "Apple", 13, "Android", 4)
+
+print(s.os)
+print(s.brand)
